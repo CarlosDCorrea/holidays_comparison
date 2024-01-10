@@ -3,7 +3,8 @@ from datetime import datetime, date
 
 from openpyxl import Workbook, load_workbook
 
-import holidays
+from holidays import country_holidays
+
 
 from .constants import (
     COLOMBIA_TITLE_CELL,
@@ -52,8 +53,8 @@ def perform_comparison(args):
     year: int = args.y if args.y else date.today().year
 
     # get colombia and chile holidays as dictionaries
-    colombia_holidays: dict[datetime, str] = holidays.CO(years=year)
-    chile_holidays: dict[datetime, str] = holidays.CL(years=year)
+    colombia_holidays: dict[datetime, str] = country_holidays('CO', years=year)
+    chile_holidays: dict[datetime, str] = country_holidays('CL', years=year)
 
     # transform both holidays into sets to delete duplications
     colombia_holidays_set = {

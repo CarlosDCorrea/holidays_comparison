@@ -3,7 +3,7 @@ import argparse
 from .holidays_comparison import perform_comparison
 
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(prog='holidays-comparison',
                                      description="""
                                      This program allows users to compare two countries holidays,
@@ -22,3 +22,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     perform_comparison(args)
+
+
+if __name__ == '__main__':
+    main()
